@@ -1,0 +1,12 @@
+.title KiCad schematic
+.include "D:/Workspace/DIGITAL_SW/KiCAD/DIGITAL_SW_KiC/SPICEMODELS/L201E3.lib"
+.include "D:/Workspace/DIGITAL_SW/KiCAD/DIGITAL_SW_KiC/SPICEMODELS/MOC308X.lib"
+R1 0 /CON 20k
+R2 /CON Net-_R2-Pad2_ 330
+XU1 Net-_R2-Pad2_ 0 Net-_Q1-G_ Net-_R3-Pad1_ MOC3083M
+V1 /CON 0 PULSE( 0 3.3 200n 200n 200n 50m 100m ) 
+V2 Net-_R4-Pad2_ Net-_Q1-A1_ DC 0 SIN( 0 311 50 ) 
+R4 Net-_Q1-A2_ Net-_R4-Pad2_ 20
+XQ1 Net-_Q1-A1_ Net-_Q1-A2_ Net-_Q1-G_ L201E3
+R3 Net-_R3-Pad1_ Net-_Q1-A2_ 470
+.end

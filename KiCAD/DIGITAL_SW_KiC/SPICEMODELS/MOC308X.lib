@@ -1,0 +1,175 @@
+*$
+********************** Optocoupler Electrical Circuit Model *********************
+** Product Name: MOC3081M
+** 6-Pin DIP Zero-Cross Triac Driver Optocoupler (800V Peak)
+** Spice Format: PSpice
+**-------------------------------------------------------------------------------
+* MOC3081M  I_trig=15mA
+*  D+  D-  MT2  MT1
+**-------------------------------------------------------------------------------
+**               Anode
+**               | Cathode
+**               | | Main Term2
+**               | | | Main Term 1
+**               | | | |
+.subckt MOC3081M 1 2 3 4
+.PARAM Itrig=15m
+.PARAM RH1=20k
+.PARAM RH2=20k
+.PARAM RH3=16.7k
+Q1 vb1p vb1 4 0 NPN1
+Q2 vb1 vb1p vd1 0 PNP1
+R3 vb1 4 {RH2}
+D1 11 2 DL
+R1 ctrl10 4 1
+C1 ctrl10 4 10e-6
+R2 ctrl1 vb1 {RH1}
+R4 vd1 vb1p {RH3}
+Vsense 1 11 0
+G1 ctrl10 4 value={-500*I(Vsense)*3.0e-3/Itrig}
+R7 vb2p 4 {RH3}
+R6 vd2 vb2 {RH2}
+Q3 vb2p vb2 vd2 0 NPN1
+Q4 vb2 vb2p 4 0 PNP1
+D3 vd2 3 D11
+D2 3 vd1 D11
+R5 N001 vb2 {RH1}
+E1 vd2 N001 ctrl1 4 -1
+R34 3 4 100MEG
+R12 ctrl1 4 1
+E2 ctrl1 4 value={IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)}
+C2 ctrl1 4 1e-6
+G3 34 0 value={-V(3,4)/1000}
+R13 34 0 1k
+C3 34 0 0.1e-6
+.MODEL PNP1 PNP(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL NPN1 NPN(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL D11 d
++ IS=3.5e-11       N=0.75           RS=5.45        BV=1100
++ IBV=1e-3         CJO=50e-12       TBV1=1.5e-3    ISR=5.0e-10
++ NR=1.0           TRS1=3.2e-3      TRS2=8.1e-6    EG=0.15
+.MODEL DL d
++ IS=2.2534e-15    RS=2.665         N=1.5          EG=0.48
++ ISR=5.5e-11      NR=3.0
++ XTI=3.0          BV=1100          IBV=0.0001
+.ends MOC3081M
+**------------------------------------------------------------------
+** Creation: Jul.-17-2023  Rev: 1.0
+** onsemi
+*$
+********************** Optocoupler Electrical Circuit Model *********************
+** Product Name: MOC3082M
+** 6-Pin DIP Zero-Cross Triac Driver Optocoupler (800V Peak)
+** Spice Format: PSpice
+**-------------------------------------------------------------------------------
+* MOC3082M  I_trig=10mA
+*  D+  D-  MT2  MT1
+**-------------------------------------------------------------------------------
+**               Anode
+**               | Cathode
+**               | | Main Term2
+**               | | | Main Term 1
+**               | | | |
+.subckt MOC3082M 1 2 3 4
+.PARAM Itrig=10m
+.PARAM RH1=20k
+.PARAM RH2=20k
+.PARAM RH3=16.7k
+Q1 vb1p vb1 4 0 NPN1
+Q2 vb1 vb1p vd1 0 PNP1
+R3 vb1 4 {RH2}
+D1 11 2 DL
+R1 ctrl10 4 1
+C1 ctrl10 4 10e-6
+R2 ctrl1 vb1 {RH1}
+R4 vd1 vb1p {RH3}
+Vsense 1 11 0
+G1 ctrl10 4 value={-500*I(Vsense)*3.0e-3/Itrig}
+R7 vb2p 4 {RH3}
+R6 vd2 vb2 {RH2}
+Q3 vb2p vb2 vd2 0 NPN1
+Q4 vb2 vb2p 4 0 PNP1
+D3 vd2 3 D11
+D2 3 vd1 D11
+R5 N001 vb2 {RH1}
+E1 vd2 N001 ctrl1 4 -1
+R34 3 4 100MEG
+R12 ctrl1 4 1
+E2 ctrl1 4 value={IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)}
+C2 ctrl1 4 1e-6
+G3 34 0 value={-V(3,4)/1000}
+R13 34 0 1k
+C3 34 0 0.1e-6
+.MODEL PNP1 PNP(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL NPN1 NPN(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL D11 d
++ IS=3.5e-11       N=0.75           RS=5.45        BV=1100
++ IBV=1e-3         CJO=50e-12       TBV1=1.5e-3    ISR=5.0e-10
++ NR=1.0           TRS1=3.2e-3      TRS2=8.1e-6    EG=0.15
+.MODEL DL d
++ IS=2.2534e-15    RS=2.665         N=1.5          EG=0.48
++ ISR=5.5e-11      NR=3.0
++ XTI=3.0          BV=1100          IBV=0.0001
+.ends MOC3082M
+**------------------------------------------------------------------
+** Creation: Jul.-17-2023  Rev: 1.0
+** onsemi
+*$
+********************** Optocoupler Electrical Circuit Model *********************
+** Product Name: MOC3083M
+** 6-Pin DIP Zero-Cross Triac Driver Optocoupler (800V Peak)
+** Spice Format: PSpice
+**-------------------------------------------------------------------------------
+* MOC3083M  I_trig=5mA
+*  D+  D-  MT2  MT1
+**-------------------------------------------------------------------------------
+**               Anode
+**               | Cathode
+**               | | Main Term2
+**               | | | Main Term 1
+**               | | | |
+.subckt MOC3083M 1 2 3 4
+.PARAM Itrig=5m
+.PARAM RH1=20k
+.PARAM RH2=20k
+.PARAM RH3=16.7k
+Q1 vb1p vb1 4 0 NPN1
+Q2 vb1 vb1p vd1 0 PNP1
+R3 vb1 4 {RH2}
+D1 11 2 DL
+R1 ctrl10 4 1
+C1 ctrl10 4 10e-6
+R2 ctrl1 vb1 {RH1}
+R4 vd1 vb1p {RH3}
+Vsense 1 11 0
+G1 ctrl10 4 value={-500*I(Vsense)*3.0e-3/Itrig}
+R7 vb2p 4 {RH3}
+R6 vd2 vb2 {RH2}
+Q3 vb2p vb2 vd2 0 NPN1
+Q4 vb2 vb2p 4 0 PNP1
+D3 vd2 3 D11
+D2 3 vd1 D11
+R5 N001 vb2 {RH1}
+E1 vd2 N001 ctrl1 4 -1
+R34 3 4 100MEG
+R12 ctrl1 4 1
+E2 ctrl1 4 value={IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)}
+C2 ctrl1 4 1e-6
+G3 34 0 value={-V(3,4)/1000}
+R13 34 0 1k
+C3 34 0 0.1e-6
+.MODEL PNP1 PNP(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL NPN1 NPN(Is=1e-15 BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1e-12)
+.MODEL D11 d
++ IS=3.5e-11       N=0.75           RS=5.45        BV=1100
++ IBV=1e-3         CJO=50e-12       XTI=1.5e-3    ISR=5.0e-10
++ NR=1.0           TRS1=3.2e-3      TRS2=8.1e-6    EG=0.15
+.MODEL DL d
++ IS=2.2534e-15    RS=2.665         N=1.5          EG=0.48
++ ISR=5.5e-11      NR=3.0
++ XTI=3.0          BV=1100          IBV=0.0001
+.ends MOC3083M
+**------------------------------------------------------------------
+** Creation: Jul.-17-2023  Rev: 1.0
+** onsemi
+*$

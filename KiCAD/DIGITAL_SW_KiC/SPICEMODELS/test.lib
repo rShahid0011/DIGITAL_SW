@@ -1,0 +1,14 @@
+* 2N5444 TRIAC model using two SCRs
+.subckt 2N5444 MT2 G MT1
+
+* SCR models (one for each half-cycle)
+X1 MT2 G Node1 MySCR
+X2 MT1 G Node2 MySCR
+
+* Resistors for holding current simulation
+Rhold1 Node1 MT1  100
+Rhold2 Node2 MT2  100
+
+* Define SCR model
+.model MySCR SCR (it=70mA ih=70mA vt=0.7v vgt=2.0v)
+.ends 2N5444
